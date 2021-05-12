@@ -15,16 +15,16 @@ const TrackList = ({ albumId }) => {
       .get(
         `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/album.tracks.get?album_id=${albumId}&page=1&page_size=20&apikey=bc5c8ecb8a2ec0d6d45fc2c1c2474894`,
       )
-      .then(function (response) {
+      .then((response) => {
         // handle success
         console.log(response.data.message.body.track_list);
         setTracks([...response.data.message.body.track_list]);
       })
-      .catch(function (error) {
+      .catch((error) => {
         // handle error
         console.log(error);
       })
-      .then(function () {
+      .then(() => {
         // always executed
       });
   }, []);

@@ -12,16 +12,16 @@ const Lyrics = ({ trackId }) => {
       .get(
         `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackId}&apikey=bc5c8ecb8a2ec0d6d45fc2c1c2474894`,
       )
-      .then(function (response) {
+      .then((response) => {
         // handle success
         console.log(response.data.message.body.lyrics);
         setsongLyrics(response.data.message.body.lyrics.lyrics_body);
       })
-      .catch(function (error) {
+      .catch((error) => {
         // handle error
         console.log(error);
       })
-      .then(function () {
+      .then(() => {
         // always executed
       });
   }, []);
