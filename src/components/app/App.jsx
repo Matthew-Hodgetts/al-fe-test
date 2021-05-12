@@ -35,7 +35,7 @@ const App = () => {
     <div className="App">
       <Router>
         <AlbumList path="/" albums={data.albumList} />
-        <Lyrics path="lyrics" />
+        <Lyrics path="lyrics/:trackId" />
         <TrackList path="songs/:albumId" />
       </Router>
     </div>
