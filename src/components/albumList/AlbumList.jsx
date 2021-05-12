@@ -1,4 +1,5 @@
 import React from 'react';
+import './AlbumList.css';
 
 import { Link } from '@reach/router';
 import PropTypes from 'prop-types';

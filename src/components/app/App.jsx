@@ -33,11 +33,13 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router>
-        <AlbumList path="/" albums={data.albumList} />
-        <Lyrics path="lyrics/:trackId" />
-        <TrackList path="songs/:albumId" />
-      </Router>
+      <div className="container">
+        <Router>
+          <AlbumList path="/" albums={data.albumList} />
+          <Lyrics path="lyrics/:trackId" />
+          <TrackList path="songs/:albumId" />
+        </Router>
+      </div>
     </div>
   );
 };

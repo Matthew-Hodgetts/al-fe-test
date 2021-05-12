@@ -1,0 +1,27 @@
+.albumList ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.albumList li {
+  padding: 0.5rem;
+  border: 2px solid #fafafa;
+  border-radius: 3px;
+  background: #fafafa;
+  height: 100%;
+}
+
+.albumList a {
+  color: #242424;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .albumList ul {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

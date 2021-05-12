@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Lyrics.css';
 
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -24,11 +25,7 @@ const Lyrics = ({ trackId }) => {
         // always executed
       });
   }, []);
-  return (
-    <div className="lyrics">
-      <pre>{songLyrics}</pre>
-    </div>
-  );
+  return <div className="lyrics">{songLyrics}</div>;
 };
 
 export default Lyrics;
