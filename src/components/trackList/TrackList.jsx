@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './TrackList.css';
 
+import Nav from '../nav/Nav';
+
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
@@ -25,23 +27,27 @@ const TrackList = ({ albumId }) => {
   }, []);
 
   return (
-    <div className="trackList">
-      <ul>
-        {tracks.map(({ track }) => {
-          // Checking if lyrics for this exist on the API
-          // If not, do not render the <Link>
-          if (track.has_lyrics === 1) {
-            return (
-              <Link to={`/lyrics/${track.track_id}`} key={track.track_id}>
-                <li>{track.track_name}</li>
-              </Link>
-            );
-          } else {
-            return <li>{track.track_name}</li>;
-          }
-        })}
-      </ul>
-    </div>
+    <>
+      <Nav route={'/'} />
+      <div className="trackList">
+        <ul>
+          {tracks.map(({ track }) => {
+            // Checking if lyrics for this exist on the API.
+            // If not, do not render the <Link> so users cannot
+            // visit the lyrics page and request lyrics that are unavilable.
+            if (track.has_lyrics === 1) {
+              return (
+                <Link to={`/lyrics/${track.track_id}`} key={track.track_id}>
+                  <li>{track.track_name}</li>
+                </Link>
+              );
+            } else {
+              return <li key={track.track_id}>{track.track_name}</li>;
+            }
+          })}
+        </ul>
+      </div>
+    </>
   );
 };
 

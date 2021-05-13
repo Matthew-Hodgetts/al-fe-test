@@ -1,0 +1,8 @@
+.nav {
+  text-align: left;
+}
+
+.nav button {
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}

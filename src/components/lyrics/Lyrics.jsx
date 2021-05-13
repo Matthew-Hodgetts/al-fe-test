@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Lyrics.css';
 
+import Nav from '../nav/Nav';
+
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
@@ -21,7 +23,12 @@ const Lyrics = ({ trackId }) => {
         console.log(error);
       });
   }, []);
-  return <div className="lyrics">{songLyrics}</div>;
+  return (
+    <>
+      <Nav route={-1} />
+      <div className="lyrics">{songLyrics}</div>
+    </>
+  );
 };
 
 export default Lyrics;

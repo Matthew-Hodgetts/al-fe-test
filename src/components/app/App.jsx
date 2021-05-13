@@ -3,13 +3,13 @@ import './App.css';
 
 import { Router } from '@reach/router';
 import axios from 'axios';
+
 // Import components
 import AlbumList from '../albumList/AlbumList';
 import Lyrics from '../lyrics/Lyrics';
 import TrackList from '../trackList/TrackList';
 
 const App = () => {
-  // State
   const [data, setData] = useState({ albumList: [] });
 
   // Call the musixmatch api for info about beatles albums
