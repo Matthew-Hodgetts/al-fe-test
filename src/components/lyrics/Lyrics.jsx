@@ -7,7 +7,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 const Lyrics = ({ trackId }) => {
-  const [songLyrics, setsongLyrics] = useState('');
+  const [songLyrics, setsongLyrics] = useState([]);
 
   useEffect(() => {
     axios
@@ -16,7 +16,9 @@ const Lyrics = ({ trackId }) => {
       )
       .then((response) => {
         // handle success
-        setsongLyrics(response.data.message.body.lyrics.lyrics_body);
+        setsongLyrics(
+          response.data.message.body.lyrics.lyrics_body.split('\n\n'),
+        );
       })
       .catch((error) => {
         // handle error
@@ -26,7 +28,11 @@ const Lyrics = ({ trackId }) => {
   return (
     <>
       <Nav route={-1} />
-      <div className="lyrics">{songLyrics}</div>
+      <div className="lyrics">
+        {songLyrics.map((para, index) => (
+          <p key={index}>{para}</p>
+        ))}
+      </div>
     </>
   );
 };
