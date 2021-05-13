@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // The number of albums to query from the API
-const NUM_OF_ALBUMS = 4;
+const NUM_OF_ALBUMS = 12;
 
 const App = () => {
   const [data, setData] = useState({ albumList: [] });
@@ -37,7 +37,7 @@ const App = () => {
     }
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=160&s_release_date=asc&g_album_name=1&page_size=${NUM_OF_ALBUMS}&apikey=e0eba28371a957ddec0895517ab94353`,
+        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=160&s_release_date=asc&g_album_name=1&page_size=${NUM_OF_ALBUMS}&apikey=${process.env.REACT_APP_MM_KEY}`,
       )
       .then((response) => {
         // handle success
