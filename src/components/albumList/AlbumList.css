@@ -1,18 +1,29 @@
 .albumList ul {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1rem;
   margin: 0;
   padding: 0;
 }
 
 .albumList li {
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
   border: 2px solid #fafafa;
-  border-radius: 3px;
+  border-radius: 2px;
   background: #fafafa;
   height: 100%;
+  box-shadow: 0 2px 3px 0 rgba(255, 255, 255, 0.541);
+  transition: all 0.3s ease;
+}
+
+.albumList li:hover {
+  box-shadow: 0 2px 3px 0 rgba(136, 136, 136, 0.678);
+  transform: scale(1.025);
 }
 
 .albumList a {
@@ -20,8 +31,33 @@
   text-decoration: none;
 }
 
+.albumList h2 {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.albumList .author {
+  padding: 0.25rem 0;
+}
+
+.albumList .rating {
+  padding-top: 0.25rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 550px) {
+  .albumList ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media only screen and (min-width: 768px) {
   .albumList ul {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .albumList li {
+    padding: 2rem 3rem;
   }
 }

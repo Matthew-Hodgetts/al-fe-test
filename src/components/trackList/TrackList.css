@@ -6,6 +6,9 @@
 
 .trackList li {
   padding: 0.5rem 0;
+  background: #fafafa;
+  margin: 0.25rem;
+  border-radius: 2px;
 }
 
 .trackList a {

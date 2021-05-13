@@ -14,20 +14,21 @@ const App = () => {
 
   // Call the musixmatch api for info about beatles albums
   useEffect(() => {
-    console.log('mounted');
+    // To preserve the limited API calls
+    if (data.albumList.length > 0) {
+      return;
+    }
     axios
-      .get('/albums.json')
-      .then(function (response) {
+      .get(
+        `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/artist.albums.get?artist_id=160&s_release_date=asc&g_album_name=1&apikey=e0eba28371a957ddec0895517ab94353`,
+      )
+      .then((response) => {
         // handle success
-        console.log(response);
         setData({ ...data, albumList: response.data.message.body.album_list });
       })
-      .catch(function (error) {
+      .catch((error) => {
         // handle error
         console.log(error);
-      })
-      .then(function () {
-        // always executed
       });
   }, []);
 

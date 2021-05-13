@@ -14,15 +14,11 @@ const Lyrics = ({ trackId }) => {
       )
       .then((response) => {
         // handle success
-        console.log(response.data.message.body.lyrics);
         setsongLyrics(response.data.message.body.lyrics.lyrics_body);
       })
       .catch((error) => {
         // handle error
         console.log(error);
-      })
-      .then(() => {
-        // always executed
       });
   }, []);
   return <div className="lyrics">{songLyrics}</div>;
