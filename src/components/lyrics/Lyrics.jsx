@@ -5,9 +5,21 @@ import Nav from '../nav/Nav';
 
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Lyrics = ({ trackId }) => {
   const [songLyrics, setsongLyrics] = useState([]);
+  const handleError = () =>
+    toast.error('💔 Sorry! An error has occured.', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
 
   useEffect(() => {
     axios
@@ -23,16 +35,21 @@ const Lyrics = ({ trackId }) => {
       .catch((error) => {
         // handle error
         console.log(error);
+        // Would normally describe the error and/or pass an error code
+        handleError();
       });
   }, []);
   return (
     <>
       <Nav route={-1} />
       <div className="lyrics">
-        {songLyrics.map((para, index) => (
-          <p key={index}>{para}</p>
-        ))}
+        {songLyrics ? (
+          songLyrics.map((para, index) => <p key={index}>{para}</p>)
+        ) : (
+          <h2>Loading</h2>
+        )}
       </div>
+      <ToastContainer />
     </>
   );
 };
